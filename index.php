@@ -42,11 +42,27 @@
 
             echo '3!='. faktorialas(3). '<br>';
             echo '10!='. faktorialas(10). '<br>';
-
+// Pasisveikinimas
             function hello($vardas, $pavarde) {
                 echo 'Labas! ' . $vardas . ' ' . $pavarde;
             }
             hello('Audrius', 'Kamarauskas');
+
+            function arrayAverage($array) 
+            {
+                $sum = 0;
+                for ($i = 0; $i < count($array); $i++) {
+                    $sum += $array[$i];
+                }
+
+                $average = $sum / count($array);
+
+                return $average;
+            }
+
+            $array = [1, 2, 4];
+
+            echo arrayAverage($array);
         ?>
 
     </body>
