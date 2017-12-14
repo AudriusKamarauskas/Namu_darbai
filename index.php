@@ -12,53 +12,58 @@
     
     <body>
         <?php
-            // $a = 2;
-            // $b = $a * 3;
 
-            // $pareigos = "Marshal";
-            // $pavarde = 'D\'Artagnan';
+            $trikampiai = [
+                [3, 4, 5],
+                [2, 10, 8],
+                [5, 6, 5],
+                [5, 5, 5]
+            ];
 
-            // $pasisveikinimas = "Hello " . $pareigos . " " . $pavarde;
+            function lygiasonioPlotas($a, $b, $c) {
+                if ($a == $b){
+                    $z = sqrt($a * $a - $b / 2 * $b / 2) * 2;
+                return $z;
+            }
+                elseif ($b == $c){
+                    $z = sqrt($a * $a - $b / 2 * $b / 2) * 2;
+                return $z;
+            }
+            elseif ($a == $c){
+                $z = sqrt($a * $a - $b / 2 * $b / 2) * 2;
+            return $z;
+            }
+            }
+          
+            function doesExist($a, $b, $c) {
+                if ($a + $b > $c && $b + $c > $a && $a + $c > $b)
+                return true;
+            else
+                return false;
+            }
+            
+            function ivairiakrascioPlotas($a, $b, $c) {
+                $x = ($a += $b += $c) / 2;
+                $y = sqrt($x * ($x - 3) * ($x -4) * ($x -5));
+                return $y;
+            }
+            
 
-            // echo $pasisveikinimas;
-
-            // $a = -2 +4;
-            // $a = $a *3;
-            // $c = $a / 4;
-            // $d = $a % 4;
-            // $a *= 2; // tas pats kas $a= $a * 2
-
-            // $a = 8;
-            // $a++;
-            // ++$a;
-            // $x = $a-- + 2;
-            // $y = ++$a *2;
-
-            // $y = htmlentities("<b>{$a}</b>");
-            // echo "<br>" . $y . "<br>";
-            // $z = html_entity_decode($y);
-            // echo $z;
-
-            // $favcolor = "red";
-
-            // switch ($favcolor) {
-            //     case "red":
-            //     echo "Your favorite color is red!";
-            //     break;
-            //     case "green":
-            //     echo "Your favorite color is green!";
-            //     break;
-            //     default:
-            //     echo "Your favorite color is neither red, blue, nor green!";
-            // }
-
-                $array = array (
-                    [1, 2, 4],
-                    [2, 10, 3],
-                    [0, 4, 9]
-                );
-
-                var_dump($array);
+            for ($i = 0; $i < count($trikampiai); $i++) {
+                $a = $trikampiai[$i][0];
+                $b = $trikampiai[$i][1];
+                $c = $trikampiai[$i][2];
+                
+                if(doesExist($a, $b, $c) && $a == $b && $a == $c) 
+                    echo ' Trikampis egzistuoja ir yra lygiakraštis, o jo plotas yra ' . 0.43301 * $a * $a . '<br>';
+                elseif (doesExist($a, $b, $c) && $a == $b || $a == $c || $b == $c)
+                    echo 'Trikampis egzistuoja ir yra lygiašonis, o jo plotas yra '
+                     . lygiasonioPlotas($a, $b, $c) . '<br>';
+                elseif (doesExist($a, $b, $c) && $a != $b && $a != $c && $b != $c)
+                    echo 'Trikampis egzistuoja ir yra įvairiakraštis, o jo plotas yra ' . ivairiakrascioPlotas($a, $b, $c) . '<br>';
+                    else echo 'Trikampis neegzistuoja <br>';
+                     
+            }  
 
         ?>
 
