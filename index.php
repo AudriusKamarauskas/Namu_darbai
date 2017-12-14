@@ -8,6 +8,24 @@
 <!--        Styles-->
         <link rel="stylesheet" type="text/css" href="reset.css">
         <link rel="stylesheet" type="text/css" href="style.css?v=3">
+        <style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+        
     </head>
     
     <body>
@@ -63,7 +81,44 @@
             $array = [1, 2, 4];
 
             echo arrayAverage($array);
+
+            $array = [
+                [
+                    'Audrius',
+                    'Kamarauskas',
+                    'kamarauskas.aud@gmail.com'
+                ],
+                [   'Jonas',
+                    'Jonaitis',
+                    'Jonas@gmail.com'
+                ]
+            ];
+
+            function peopleInfo(array $array) 
+            {
+                for ($i = 0; $i <count($array); $i++) {
+                    echo '<tr>';
+                    for ($j = 0; $j < count($array[$i]); $j++) {
+                        echo '<td>' . $array[$i][$j] . '</td>';
+                        
+                    }
+                }echo '</tr>';
+            }
+
+            
         ?>
+
+        <table>
+            <th>
+                <tr>
+                    <td>Vardas</td>
+                    <td>Pavarde</td>
+                    <td>El. Pastas</td>
+                </tr>
+            </th>
+        </<table>
+        <?php peopleInfo($array) ?>
+        
 
     </body>
     
