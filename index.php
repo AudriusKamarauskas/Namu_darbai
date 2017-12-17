@@ -105,7 +105,14 @@ tr:nth-child(even) {
                 }echo '</tr>';
             }
 
-            
+            function check($parameter) 
+            {
+                if (!$parameter){
+                    return true;
+                } return false;
+            }
+             
+
         ?>
 
         <table>
