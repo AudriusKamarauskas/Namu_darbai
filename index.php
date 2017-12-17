@@ -40,7 +40,7 @@
                 return $sum == $n;
             }
              
-            for ($n = 1; $n <= 1001; $n++) {
+            for ($n = 1; $n <= 1000; $n++) {
               
             if (isPerfectNumber($n))
                 echo $n . " Yra tobulas skaicius <br>";
