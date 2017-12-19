@@ -44,6 +44,7 @@
             }
             
             print_r($d);
+            echo '<br> Didziausia stulpelio suma yra ' . (max($d));
         
         ?>
     </body>
