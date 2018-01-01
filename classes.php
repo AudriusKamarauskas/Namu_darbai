@@ -19,7 +19,7 @@ class Radar
         return $this->time;
     }
     public function greitis(){
-        return round ($this->distance / $this->time, 1);
+        return round ($this->distance / $this->time * 3.6 , 1);
     }
 
     public function getNumber() {

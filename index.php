@@ -8,9 +8,9 @@ usort ($array, function ($a, $b) {
 });
 echo '<pre>' . var_export($array, true) . '</pre>';
 
-echo $array[0]->greitis() * 3.6 . " Km/h <br>";
-echo $array[1]->greitis() * 3.6 . " Km/h <br>";
-echo $array[2]->greitis() * 3.6 . " Km/h <br>";
-echo $array[3]->greitis() * 3.6 . " Km/h <br>";
+echo $array[0]->greitis() . " Km/h <br>";
+echo $array[1]->greitis() . " Km/h <br>";
+echo $array[2]->greitis() . " Km/h <br>";
+echo $array[3]->greitis() . " Km/h <br>";
         
 ?> 
