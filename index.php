@@ -30,8 +30,10 @@ tr:nth-child(even) {
 
 
 <?php 
-if (!empty($_POST)){
+if (!empty($_POST) && !empty($_POST['date']) && !empty($_POST['time']) && 
+!empty($_POST['carNumber']) && !empty($_POST['distance']) && !empty($_POST['time2'])){
     $_SESSION['date'][]=$_POST; 
+    echo '<script>window.location=window.location;</script>'; exit();
 }
 
 if (!empty($_SESSION['date'])){
