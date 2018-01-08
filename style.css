@@ -1,0 +1,26 @@
+table {
+    width: 500px;
+}
+
+td {
+    padding: 15px;
+    text-align: center;
+}
+
+td img {
+    height: 50px;
+}
+
+td:first-child {
+    background-color: blue;
+    color: #fff;
+}
+
+td:not(:first-child) {
+    background-color: lightgreen;
+    color: grey;
+}
+
+.button {
+    cursor: pointer;
+}
