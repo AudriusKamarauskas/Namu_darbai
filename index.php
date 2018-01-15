@@ -69,7 +69,6 @@ require_once 'connect.php';
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         ?>
-        <form  method='post'>
         <select onchange="window.location.href=this.value;">
             <?php while ($row = $result->fetch_assoc()) {
                echo '<option value=?edit=' . $row['id'] . '>' . $row['number'] . '</option>';
