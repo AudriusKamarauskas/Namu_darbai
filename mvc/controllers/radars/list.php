@@ -4,7 +4,7 @@ require_once $dir . '/models/radars.php';
 
 $puslapis = @$_GET['puslapis'];
 
-$ip = 5;
+$ip = 10;
 
 if ($puslapis < 1) {
     $puslapis = 0;

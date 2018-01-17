@@ -39,6 +39,6 @@ foreach($drivers as $a): ?>
 </table>
 
 <?php
-//  puslapiavimas($puslapis, $pages, $ip);
+ puslapiavimas($puslapis, $pages, $ip);
 ?>
 

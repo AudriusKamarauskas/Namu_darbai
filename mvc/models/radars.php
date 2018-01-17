@@ -25,8 +25,8 @@ class Radar
     static function all($limit, $offset)
     {
         $conn = connectDB();
-        $sql = 'SELECT * FROM radars ORDER BY `number`, `date` DESC';
-        // Puslapiavimas ---> $sql = 'SELECT * FROM radars ORDER BY `number`, `date` DESC LIMIT '.$offset.', '.$limit; 
+   
+        $sql = 'SELECT * FROM radars ORDER BY `number`, `date` DESC LIMIT '.$offset.', '.$limit; 
         $result = $conn->query($sql);
         $radars = [];
         if ($result->num_rows > 0) {

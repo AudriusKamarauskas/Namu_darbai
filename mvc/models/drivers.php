@@ -19,9 +19,8 @@ class Driver
     static function all($limit, $offset)
     {
         $conn = connectDB();
-        //  Puslapiavimas ---> $sql = 'SELECT * FROM drivers LIMIT '.$offset.', '.$limit;
-        $sql = 'SELECT * FROM drivers';
-
+        $sql = 'SELECT * FROM drivers LIMIT '.$offset.', '.$limit;
+        
         $result = $conn->query($sql);
 
         $drivers = [];
