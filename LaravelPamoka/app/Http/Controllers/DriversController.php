@@ -103,12 +103,12 @@ class DriversController extends Controller
     {
         Driver::where('driverId', $id)->first()->delete();
         
-        return redirect()->route('radars.index');
+        return redirect()->route('drivers.index');
     }
     public function restore($id)
     {
          
         Driver::onlyTrashed()->where('driverId', $id)->first()->restore();
-        return redirect()->route('radars.index');
+        return redirect()->route('drivers.index');
     }
 }
