@@ -14,7 +14,7 @@ class RadarsController extends Controller
      */
     public function index()
     {
-        $radars = Radar::all();
+        $radars = Radar::withTrashed()->orderBy('number', 'desc')->paginate(8);
 
         return view('radars.index', compact('radars'));
     }
@@ -107,6 +107,11 @@ class RadarsController extends Controller
         Radar::find($id)->delete();
         
         // Session::flash('message', 'Radaras sekmingai istrintas!');
+        return redirect()->route('radars.index');
+    }
+    public function restore($id)
+    {
+        Radar::onlyTrashed()->find($id)->restore();
         return redirect()->route('radars.index');
     }
 }

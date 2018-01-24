@@ -1,3 +1,6 @@
+@extends('layouts.layout')
+@section('content')
+@section('header_style')
 <style>
     input {
         width: 500px;
@@ -5,7 +8,7 @@
         margin: 15px;
     }
 </style>
-
+@endsection
 <form action="{{ route('radars.update', ['radar' => $radar->id]) }}" method="POST">
         
         {{ csrf_field() }}
@@ -18,4 +21,4 @@
         <input type="submit" value="Atnaujinti">
     </form>
 </div>
-
+@endsection

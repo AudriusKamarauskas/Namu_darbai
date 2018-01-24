@@ -14,7 +14,7 @@ class DriversController extends Controller
      */
     public function index()
     {
-        $drivers = Driver::all();
+        $drivers = Driver::withTrashed()->orderBy('name', 'desc')->paginate(8);
 
         return view('drivers.index', compact('drivers'));
     }
@@ -101,6 +101,14 @@ class DriversController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Driver::where('driverId', $id)->first()->delete();
+        
+        return redirect()->route('radars.index');
+    }
+    public function restore($id)
+    {
+         
+        Driver::onlyTrashed()->where('driverId', $id)->first()->restore();
+        return redirect()->route('radars.index');
     }
 }

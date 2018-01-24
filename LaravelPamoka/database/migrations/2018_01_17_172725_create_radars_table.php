@@ -21,6 +21,7 @@ class CreateRadarsTable extends Migration
             $table->double('time');
             $table->integer('driver_id')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
