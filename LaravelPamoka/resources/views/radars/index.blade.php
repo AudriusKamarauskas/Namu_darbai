@@ -25,6 +25,7 @@ tr:nth-child(even) {
         <th>Data</th>
         <th>Numeris</th>
         <th>Greitis Km/h</th>
+        <th>Vairuotojas</th>
         <th>Veiksmai</th>
     </tr>
 
@@ -33,6 +34,9 @@ tr:nth-child(even) {
         <td>{{ $radar->date }}</td>
         <td>{{ $radar->number }}</td>
         <td>{{ round($radar->distance / $radar->time * 3.6) }}</td>
+        @if ($radar->drivers)
+        <td>{{ $radar->drivers->name }}</td>
+        @endif
         @if($radar->trashed())
         <td>
             <form action="{{ route('radars.restore', ['radar' => $radar->id]) }}" methos="POST">

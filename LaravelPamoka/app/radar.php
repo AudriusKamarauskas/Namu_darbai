@@ -11,4 +11,9 @@ class radar extends Model
     protected $table = 'radars';
 
     protected $fillable = ['date', 'number', 'distance', 'time', 'deleted_at'];
+
+    public function drivers()
+    {
+        return $this->belongsTo(Driver::class, 'driver_id', 'driverId');
+    }
 }

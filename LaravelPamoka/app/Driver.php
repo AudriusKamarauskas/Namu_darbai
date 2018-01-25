@@ -14,4 +14,11 @@ class Driver extends Model
     protected $table = 'drivers';
 
     protected $fillable = ['name', 'city'];
+
+    protected $foreignKey = 'driver_id';
+
+    public function radars()
+    {
+        return $this->hasMany(Radar::class, 'driver_id', 'driverId');
+    }
 }

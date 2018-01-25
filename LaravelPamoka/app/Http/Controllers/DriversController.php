@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Driver;
+use Validator;
 
 class DriversController extends Controller
 {
@@ -13,7 +14,7 @@ class DriversController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $drivers = Driver::withTrashed()->orderBy('name', 'desc')->paginate(8);
 
         return view('drivers.index', compact('drivers'));
@@ -36,7 +37,14 @@ class DriversController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'city' => 'required',
+        ]);
+
+        $validator->validate();
+
         $data = [
             'name' => $request->name,
             'city' => $request->city,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Radar;
+use Validator;
 
 class RadarsController extends Controller
 {
@@ -37,6 +38,13 @@ class RadarsController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'time' => 'required',
+            'distance' => 'required',
+        ]);
+
+        $validator->validate();
+
         $data = [
             'date' => $request->date,
             'number' => $request->number,

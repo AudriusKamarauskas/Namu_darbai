@@ -13,7 +13,7 @@ class RadarsRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class RadarsRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'distance' => 'required',
+            'time' => 'required',
         ];
     }
 }
