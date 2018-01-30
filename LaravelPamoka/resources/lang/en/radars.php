@@ -3,7 +3,7 @@
 return [
     'date' => 'Date',
     'number' => 'Number',
-    'speed' => 'Speed :metric',
+    'speed' => 'Speed',
     'drivers' => 'Drivers',
     'actions' => 'Actions',
 ];

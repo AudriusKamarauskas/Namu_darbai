@@ -40,9 +40,18 @@ Route::middleware('auth')->group(function(){
     Route::delete('drivers/{driver}', 'DriversController@destroy')->name('drivers.destroy');
     Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::get('language/switch/{language}', 'LanguageController@switch')->name('language.switch');
-    
 });
+
+Route::get('/', function () {
+    return view('home');
+});
+
+Route::post('/language', array (
+    'Middleware'=>'LanguageSwitcher',
+    'uses'=>'LanguageController@index'
+));
+
+
 
 
 

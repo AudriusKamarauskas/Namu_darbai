@@ -1,30 +1,11 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('content')
-@section('header_style')
-<style>
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-@endsection
 
 <table>
     <tr>
         <th>{{ trans('radars.date') }}</th>
         <th>{{ trans('radars.number') }}</th>
-        <th>{{ trans('radars.speed', ['metrics' => 'KM/H']) }}</th>
+        <th>{{ trans('radars.speed') }}</th>
         <th>{{ trans('radars.drivers') }}</th>
         <th>{{ trans('radars.actions') }}</th>
     </tr>
@@ -34,8 +15,8 @@ tr:nth-child(even) {
         <td>{{ $radar->date }}</td>
         <td>{{ $radar->number }}</td>
         <td>{{ round($radar->distance / $radar->time * 3.6) }}</td>
-        @if ( Isset ($radar->created_by))
-        <td>{{ $radar->created_by }} </td>
+        @if ($radar->user)
+        <td>{{ $radar->user->name }} </td>
         @endif
         @if ($radar->drivers)
         <td>{{ $radar->drivers->name }}</td>
@@ -61,8 +42,5 @@ tr:nth-child(even) {
 </table>
 
 {{ $radars->links() }}
-
-<br><a href="http://localhost/LaravelPamoka/public/drivers">Vairuotojai</a>
-<br><a href="http://localhost/LaravelPamoka/public/radars/create">Sukurti radara</a>
 
 @endsection

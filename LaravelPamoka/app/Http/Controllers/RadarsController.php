@@ -14,9 +14,8 @@ class RadarsController extends Controller
      */
     public function index()
     {
-        app()->setLocale('lt');
+        
         $radars = Radar::withTrashed()->orderBy('number', 'desc')->paginate(8);
-
         return view('radars.index', compact('radars'));
     }
 
