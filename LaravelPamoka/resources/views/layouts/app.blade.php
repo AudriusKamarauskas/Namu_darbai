@@ -36,7 +36,11 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <ul>
+                            <li><a href="http://localhost/LaravelPamoka/public/drivers">Vairuotojai</a></li>
+                            <li><a href="http://localhost/LaravelPamoka/public/radars">Radarai</a></a></li>
+                            <li><a href="http://localhost/LaravelPamoka/public/radars/create">Sukurti radara</a></li>
+                        </ul>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

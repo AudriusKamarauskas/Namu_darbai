@@ -31,6 +31,7 @@
     <input value="{{ old('number') }}" type="string" name="number" placeholder="Iveskite numeri">
     <input value="{{ old('distance') }}" type="string" name="distance" placeholder="Iveskite atstuma">
     <input value="{{ old('time') }}" type="string" name="time" placeholder="Iveskite laika">
+    <input value="{{ auth()->user()->id }}" type="hidden" name="created_by">
     <input type="submit" value="prideti">
 </form>
 @endsection

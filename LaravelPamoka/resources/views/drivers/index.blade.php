@@ -21,8 +21,8 @@ tr:nth-child(even) {
 @endsection
 <table>
     <tr>
-        <th>Vardas, Pavarde</th>
-        <th>Miestas</th>
+        <th>{{ __('Name') }}</th>
+        <th>{{ __('City') }}</th>
         <th>Veiksmai</th>
     </tr>
 

@@ -16,6 +16,9 @@
 
                     You are logged in!
                 </div>
+                    <div class="col-md-6 col-md-offset-4">
+                        <a href="http://localhost/LaravelPamoka/public/radars/create">Sukurti radara</a>    
+                    </div>
             </div>
         </div>
     </div>

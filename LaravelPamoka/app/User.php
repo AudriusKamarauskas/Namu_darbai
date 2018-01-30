@@ -26,4 +26,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function radars() 
+    {
+        return $this->hasMany(Radar::class, 'created_by', 'id');
+    }
 }

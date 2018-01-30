@@ -22,6 +22,8 @@ class CreateRadarsTable extends Migration
             $table->integer('driver_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
+            $table->string('created_by')->nullable();
+            $table->string('updated_by')->nullable();
         });
     }
 

@@ -21,4 +21,5 @@ class Driver extends Model
     {
         return $this->hasMany(Radar::class, 'driver_id', 'driverId');
     }
+    
 }

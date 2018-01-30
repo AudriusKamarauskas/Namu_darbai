@@ -103,6 +103,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'distance' => [
+            'required' => 'THE DATE IS REQUIRED!!',
+        ],
     ],
 
     /*

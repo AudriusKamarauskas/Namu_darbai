@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\RadarsRequest;
 use App\Radar;
-use Validator;
 
 class RadarsController extends Controller
 {
@@ -15,6 +14,7 @@ class RadarsController extends Controller
      */
     public function index()
     {
+        app()->setLocale('lt');
         $radars = Radar::withTrashed()->orderBy('number', 'desc')->paginate(8);
 
         return view('radars.index', compact('radars'));
@@ -36,20 +36,14 @@ class RadarsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RadarsRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'time' => 'required',
-            'distance' => 'required',
-        ]);
-
-        $validator->validate();
-
         $data = [
             'date' => $request->date,
             'number' => $request->number,
             'distance' => $request->distance,
             'time' => $request->time,
+            'created_by' => auth()->user()->id,
         ];
 
         Radar::create($data);
@@ -88,7 +82,7 @@ class RadarsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RadarsRequest $request, $id)
     {
         $radar = Radar::find($id);
 
@@ -97,6 +91,7 @@ class RadarsController extends Controller
             'number' => $request->number,
             'distance' => $request->distance,
             'time' => $request->time,
+            'updated_by' => auth()->user()->id,
         ];
         
         $radar->update($data);

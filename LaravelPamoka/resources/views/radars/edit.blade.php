@@ -18,6 +18,7 @@
         <input type="string" name="number" value="{{ $radar->number }}">
         <input type="string" name="distance" value="{{ $radar->distance }}">
         <input type="string" name="time" value="{{ $radar->time }}">
+        <input value="{{ auth()->user()->id }}" type="hidden" name="updated_by">
         <input type="submit" value="Atnaujinti">
     </form>
 </div>

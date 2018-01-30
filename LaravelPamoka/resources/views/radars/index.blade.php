@@ -22,11 +22,11 @@ tr:nth-child(even) {
 
 <table>
     <tr>
-        <th>Data</th>
-        <th>Numeris</th>
-        <th>Greitis Km/h</th>
-        <th>Vairuotojas</th>
-        <th>Veiksmai</th>
+        <th>{{ trans('radars.date') }}</th>
+        <th>{{ trans('radars.number') }}</th>
+        <th>{{ trans('radars.speed', ['metrics' => 'KM/H']) }}</th>
+        <th>{{ trans('radars.drivers') }}</th>
+        <th>{{ trans('radars.actions') }}</th>
     </tr>
 
     @foreach($radars as $radar)
@@ -34,6 +34,9 @@ tr:nth-child(even) {
         <td>{{ $radar->date }}</td>
         <td>{{ $radar->number }}</td>
         <td>{{ round($radar->distance / $radar->time * 3.6) }}</td>
+        @if ( Isset ($radar->created_by))
+        <td>{{ $radar->created_by }} </td>
+        @endif
         @if ($radar->drivers)
         <td>{{ $radar->drivers->name }}</td>
         @endif
@@ -59,6 +62,7 @@ tr:nth-child(even) {
 
 {{ $radars->links() }}
 
-<a href="http://localhost/LaravelPamoka/public/drivers">Vairuotojai</a>
+<br><a href="http://localhost/LaravelPamoka/public/drivers">Vairuotojai</a>
+<br><a href="http://localhost/LaravelPamoka/public/radars/create">Sukurti radara</a>
 
 @endsection
