@@ -4,9 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RadarsRequest;
 use App\Radar;
+use App\Repositories\RadarRepository;
 
 class RadarsController extends Controller
 {
+
+    protected $radarRepository;
+
+    public function __construct(RadarRepository $radarRepository) 
+    {
+        $this->radarRepository = $radarRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +22,7 @@ class RadarsController extends Controller
      */
     public function index()
     {
-        
-        $radars = Radar::withTrashed()->orderBy('number', 'desc')->paginate(8);
+        $radars = $this->radarRepository->getAllWithTrashed(8);
         return view('radars.index', compact('radars'));
     }
 
@@ -45,7 +52,7 @@ class RadarsController extends Controller
             'created_by' => auth()->user()->id,
         ];
 
-        Radar::create($data);
+        $radar = $this->radarRepository->store($data);
 
         return redirect()->route('radars.index');
     }
@@ -69,7 +76,7 @@ class RadarsController extends Controller
      */
     public function edit($id)
     {
-        $radar = Radar::find($id);
+        $radar = $this->radarRepository->edit($id);
 
         return view('radars.edit', compact('radar'));
     }
@@ -83,8 +90,6 @@ class RadarsController extends Controller
      */
     public function update(RadarsRequest $request, $id)
     {
-        $radar = Radar::find($id);
-
         $data = [
             'date' => $request->date,
             'number' => $request->number,
@@ -93,7 +98,7 @@ class RadarsController extends Controller
             'updated_by' => auth()->user()->id,
         ];
         
-        $radar->update($data);
+        $radar = $this->radarRepository->update($id, $data);
 
         return redirect()->route('radars.index');
     }
@@ -106,14 +111,14 @@ class RadarsController extends Controller
      */
     public function destroy($id)
     {
-        Radar::find($id)->delete();
+        $radar = $this->radarRepository->destroy($id);
         
         // Session::flash('message', 'Radaras sekmingai istrintas!');
         return redirect()->route('radars.index');
     }
     public function restore($id)
     {
-        Radar::onlyTrashed()->find($id)->restore();
+        $radar = $this->radarRepository->restore($id);
         return redirect()->route('radars.index');
     }
 }

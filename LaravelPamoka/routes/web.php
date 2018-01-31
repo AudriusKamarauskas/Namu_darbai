@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function(){
     Route::get('drivers/create', 'DriversController@create')->name('drivers.create');
     Route::post('drivers', 'DriversController@store')->name('drivers.store');
     Route::get('drivers/{driver}/edit', 'DriversController@edit')->name('drivers.edit');
-    Route::post('drivers/{driver}', 'DriversController@update')->name('drivers.update');
+    Route::put('drivers/{driver}', 'DriversController@update')->name('drivers.update');
     Route::get('drivers/{driver}', 'DriversController@restore')->name('drivers.restore');
     Route::delete('drivers/{driver}', 'DriversController@destroy')->name('drivers.destroy');
     Route::get('/home', 'HomeController@index')->name('home');

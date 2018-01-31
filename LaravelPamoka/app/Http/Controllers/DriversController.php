@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Driver;
 use App\Http\Requests\DriversRequest;
+use App\Repositories\DriverRepository;
 
 class DriversController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    protected $driverRepository;
+
+    public function __construct(DriverRepository $driverRepository) 
+    {
+        $this->driverRepository = $driverRepository;
+    }
+
     public function index()
     {   
         app()->setLocale('lt');
-        $drivers = Driver::withTrashed()->orderBy('name', 'desc')->paginate(8);
+        $drivers = $this->driverRepository->getAllWithTrashed(8);
 
         return view('drivers.index', compact('drivers'));
     }
@@ -43,7 +47,7 @@ class DriversController extends Controller
             'city' => $request->city,
         ];
 
-        Driver::create($data);
+        $driver = $this->driverRepository->store($data);
 
         return redirect()->route('drivers.index');
     }
@@ -68,7 +72,7 @@ class DriversController extends Controller
      */
     public function edit($id)
     {
-        $driver = Driver::where('driverId', $id)->first();
+        $driver = $this->driverRepository->edit($id);
 
         return view('drivers.edit', compact('driver'));
     }
@@ -80,16 +84,15 @@ class DriversController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DriversRequest $request, $id)
     {
-        $driver = Driver::where('driverId', $id)->first();
 
         $data = [
             'name' => $request->name,
             'city' => $request->city,
         ];
         
-        $driver->update($data);
+        $driver = $this->driverRepository->update($id, $data);
 
         return redirect()->route('drivers.index');
     }
@@ -102,14 +105,14 @@ class DriversController extends Controller
      */
     public function destroy($id)
     {
-        Driver::where('driverId', $id)->first()->delete();
+        $driver = $this->driverRepository->destroy($id); 
         
         return redirect()->route('drivers.index');
     }
     public function restore($id)
     {
          
-        Driver::onlyTrashed()->where('driverId', $id)->first()->restore();
+        $driver = $this->driverRepository->restore($id);
         return redirect()->route('drivers.index');
     }
 }

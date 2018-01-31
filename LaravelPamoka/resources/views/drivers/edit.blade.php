@@ -12,6 +12,7 @@
 <form action="{{ route('drivers.update', ['driver' => $driver->driverId]) }}" method="POST">
         
         {{ csrf_field() }}
+        {{ method_field('PUT')}}
 
         <input type="string" name="name" value="{{ $driver->name }}">
         <input type="string" name="city" value="{{ $driver->city }}">

@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 @section('content')
 
 <table>
@@ -32,5 +32,5 @@
     @endforeach
 </table>
 {{ $drivers->links() }}
-<a href="http://localhost/LaravelPamoka/public/radars">Radarai</a>
+
 @endsection
